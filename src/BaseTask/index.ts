@@ -1,4 +1,4 @@
-import { TaskData, TaskExecutor, TaskStatus } from '../types';
+import { FulfilledPromise, TaskData, TaskExecutor, TaskStatus } from '../types';
 import { generateId } from '../utils';
 import Observable from '../Observable';
 
@@ -47,7 +47,7 @@ export default class BaseTask<T> {
     this.status.setValue('working');
     try {
       const result = this.executor();
-      const isPromise = (result as any).then !== undefined
+      const isPromise = (result as FulfilledPromise).then !== undefined;
       if (isPromise) {
         (result as Promise<T>)
           .then((value) => {
@@ -55,13 +55,15 @@ export default class BaseTask<T> {
             this.status.setValue('finished');
           })
           .catch((e) => {
-            this.status.setValue('error')
+            this.executionResult = e;
+            this.status.setValue('error');
           });
       } else {
         this.executionResult = result as T;
         this.status.setValue('finished');
       }
     } catch (e) {
+      this.executionResult = e;
       this.status.setValue('error');
     }
   }

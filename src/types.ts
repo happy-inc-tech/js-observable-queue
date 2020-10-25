@@ -2,6 +2,7 @@
 import TaskQueue from './Queue';
 
 export interface TaskData {
+  id?: string | number;
   [key: string]: any;
 }
 
@@ -24,3 +25,8 @@ export type ObservableListener<T> = (value: T) => void;
 export type EachHook = (queueElement: ExecutableTask) => void | Promise<void>;
 
 export type AllHook = (queue: TaskQueue) => void | Promise<void>;
+
+export type FulfilledPromise = {
+  [key: string]: any;
+  then: (value?: any) => void;
+};

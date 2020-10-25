@@ -1,14 +1,14 @@
-import JsObservableQueue from './lib'
-const { BaseTask, TaskQueue } = JsObservableQueue
+import JsObservableQueue from './lib';
+const { BaseTask, TaskQueue } = JsObservableQueue;
 
 const TASK_EXEC_TIME = 1000;
 const AFTER_EACH_DELAY_TIME = 500;
 
-class MyTask extends BaseTask<string | number> {
+class MyTask extends BaseTask<string> {
   executor = () => {
-    this.executionResult = (this.id as string).split('').reverse().join('');
-    return new Promise<string | number>((resolve) => {
-      setTimeout(() => resolve('Result: ' + this.executionResult), TASK_EXEC_TIME);
+    const reversedId = (this.id as string).split('').reverse().join('');
+    return new Promise<string>((resolve) => {
+      setTimeout(() => resolve('Result: ' + reversedId), TASK_EXEC_TIME);
     });
   };
 }
