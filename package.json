@@ -11,6 +11,13 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happy-inc-tech/js-observable-queue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/happy-inc-tech/js-observable-queue/issues"
+  },
   "keywords": [
     "js",
     "queue",
