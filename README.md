@@ -2,6 +2,8 @@
 
 **Zero-dependency non-blocking task queue for Node.js and Browser**
 
+![](https://lyoha.info/assets/img/js-observable-queue.gif)
+
 1. [Getting started](#getting-started)
 2. [BaseTask constructor parameters](#basetask-constructor-parameters)
 3. [Creating a Queue and adding tasks](#creating-a-queue-and-adding-tasks)
